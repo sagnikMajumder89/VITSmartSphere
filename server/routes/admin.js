@@ -2,8 +2,8 @@ const router = require("express").Router();
 const Semester = require("../models/Semester");
 
 router.post("/createSemester", async (req, res) => {
-  const semester = new Semester(req.body.semester);
   try {
+    const semester = new Semester(req.body.semester);
     const newSem = await semester.save();
     res
       .status(200)
