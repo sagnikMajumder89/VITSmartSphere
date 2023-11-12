@@ -3,12 +3,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const adminRouter = require("./routes/admin");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const User = require("./models/User");
+const adminRoutes = require("./routes/admin");
+const authRoutes = require("./routes/authentication");
 
 //db Connection
 const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/smartsphere";
@@ -59,8 +60,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //routes
-app.use("/admin", adminRouter);
+app.use("/admin", adminRoutes);
+app.use("/auth", authRoutes);
 
+//dev debug checks
 app.get("/", (req, res) => {
   console.log(req.user);
   res.send(req.user);

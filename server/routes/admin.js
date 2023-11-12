@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const Semester = require("../models/Semester");
+const { isLoggedIn, isAdmin, isFaculty } = require("../middlewares");
 
-router.post("/createSemester", async (req, res) => {
+router.post("/createSemester", isLoggedIn, isAdmin, async (req, res) => {
   try {
     const semester = new Semester(req.body.semester);
     const newSem = await semester.save();
