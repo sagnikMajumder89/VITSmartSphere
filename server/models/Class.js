@@ -14,8 +14,14 @@ const classSchema = new Schema({
   ],
   courses: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Course",
+      courseDetails: {
+        type: Schema.Types.ObjectId,
+        ref: "Course",
+      },
+      facultyDetails: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
     },
   ],
 });

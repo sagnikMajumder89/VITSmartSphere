@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const semesterSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true,
   },
@@ -10,10 +10,10 @@ const semesterSchema = new Schema({
     type: String,
     required: true,
   },
-  courses: [
+  classes: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Course",
+      ref: "Class",
     },
   ],
 });

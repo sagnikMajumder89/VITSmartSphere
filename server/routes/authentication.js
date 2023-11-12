@@ -8,12 +8,6 @@ router.post("/signup", async (req, res) => {
     console.log(req.body);
     const user = new User({ username, email, role, officialId });
     const newUser = await User.register(user, password);
-    req.login(newUser, (err) => {
-      if (err)
-        return res
-          .status(500)
-          .json({ message: `User login failure: ${err.message}` });
-    });
     res.status(201).json({ message: "User registered" });
   } catch (e) {
     res.status(400).json({ message: `Error registering user: ${e.message}` });
