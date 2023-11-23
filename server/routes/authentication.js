@@ -19,13 +19,17 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 });
 
 router.get("/logout", (req, res, next) => {
-  req.logout(function (err) {
-    if (err) {
-      return res
-        .status(500)
-        .json({ message: `Error logging out user: ${err.message}` });
-    }
-    res.status(200).json({ message: "User logged out" });
-  });
+  console.log(req.user);
+  if (req.user) {
+    req.logout(function (err) {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: `Error logging out user: ${err.message}` });
+      }
+      return res.status(200).json({ message: "User logged out" });
+    });
+  }
+  res.status(200).json({ message: "No user to log out" });
 });
 module.exports = router;
