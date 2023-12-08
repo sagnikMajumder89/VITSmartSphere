@@ -1,13 +1,13 @@
 
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavBar from "./AppBar";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import BottomBar from "./BottomBar";
 import { CssBaseline } from '@mui/material';
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export default function Layout() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const theme = createTheme({
         palette: {
             primary: {
