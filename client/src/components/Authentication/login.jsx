@@ -11,7 +11,7 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const checkAuth = async () => {
-        await fetch('http://localhost:3000/auth/checkAuth', {
+        await fetch('https://smartspherevit.onrender.com/auth/checkAuth', {
             method: 'GET',
             credentials: 'include'
         }).then(res =>
