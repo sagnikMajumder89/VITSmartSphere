@@ -24,7 +24,7 @@ export default function Login() {
             })
     }
     const handleLogin = async () => {
-        const res = await fetch('http://localhost:3000/auth/login', {
+        const res = await fetch('https://smartspherevit.onrender.com/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
