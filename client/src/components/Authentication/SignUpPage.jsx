@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-export default function SingUp() {
+export default function SignUpPage() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [userRole, setUserRole] = useState('Student')
     const openUp = (event) => {
