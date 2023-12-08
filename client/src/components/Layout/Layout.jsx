@@ -1,12 +1,13 @@
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./AppBar";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import BottomBar from "./BottomBar";
 import { CssBaseline } from '@mui/material';
+import { useEffect } from "react";
 
 export default function Layout() {
-
+    const navigate = useNavigate();
     const theme = createTheme({
         palette: {
             primary: {
@@ -20,6 +21,20 @@ export default function Layout() {
             },
         },
     });
+
+    // useEffect(() => async () => {
+    //     await fetch('http://localhost:3000/auth/checkAuth', {
+    //         method: 'GET',
+    //         credentials: 'include'
+    //     }).then(res => {
+    //         console.log(res.status)
+    //         if (res.status !== 200) {
+    //             navigate('/');
+    //         }
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
+    // }, [])
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />

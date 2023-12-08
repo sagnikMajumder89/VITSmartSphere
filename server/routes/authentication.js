@@ -18,6 +18,14 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   res.status(200).json({ message: "User logged in" });
 });
 
+router.get("/checkAuth", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.status(200).json("User is logged in");
+  } else {
+    res.status(401).json("No user is logged in");
+  }
+});
+
 router.get("/logout", (req, res, next) => {
   console.log(req.user);
   if (req.user) {
@@ -26,10 +34,8 @@ router.get("/logout", (req, res, next) => {
         return res
           .status(500)
           .json({ message: `Error logging out user: ${err.message}` });
-      }
-      return res.status(200).json({ message: "User logged out" });
+      } else res.status(200).json({ message: "User logged out" });
     });
-  }
-  res.status(200).json({ message: "No user to log out" });
+  } else res.status(200).json({ message: "No user to log out" });
 });
 module.exports = router;
